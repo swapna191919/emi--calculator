@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-image: url("https://wallpapercave.com/wp/wp7453551.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+
+    }
+
+    div {
+      position: relative;
+      top: 50px;
+      left: 200px;
+      width: 500px;
+      height: 320px;
+      /* color:rgb(99, 245, 15); */
+      color: rgb(252, 249, 246);
+      font-size: xx-large;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+      font-weight: 700;
+      padding: 20px;
+      border-radius: 20px;
+      border-color: hsl(105, 77%, 55%);
+      box-shadow: 5px 5px 5px 10px rgb(31, 1, 1);
+
+    }
+
+    button {
+
+      color: green;
+      width: 200px;
+      height: 45px;
+      border-radius: 20px;
+      border-color: antiquewhite;
+      position: relative;
+
+    }
+
+    button:hover {
+      background-color: azure;
+      border-bottom: whitesmoke;
+
+    }
+
+    input:hover {
+      background-color: aliceblue;
+      height: 30px;
+      border-color: white;
+
+    }
+
+    input {
+      border-radius: 5px;
+      border-color: white;
+    }
+
+    #heading {
+      color: aqua;
+      position: relative;
+      left: 240px;
+      top: 40px;
+    }
+
+    #heading:hover {
+      color: green;
+    }
+
+    #payment {
+      width: 270px;
+      height: 150px;
+      padding: 10px;
+
+      margin-left: 20px;
+      border: 2px solid;
+      font-size: larger;
+      border-radius: 20px;
+      box-shadow: 0 0 5px 10px;
+      color: rgb(33, 30, 19);
+
+      position: relative;
+
+      left: 550px;
+      bottom: 230px;
+    }
+
+    #payment:hover {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="heading">Calculate your EMI</h1>
+  <div>
+    <br>
+    <center>
+      <label for="Loan Amount">Loan Amount:</label>
+      <input type="number" id="principal" min="1"><br><br>
+
+      <label for="rateof interest %">Rate Of Interest % :</label>
+      <input type="number" id="iry" required><br><br></h2>
+
+      <label for="years">Years :</label>
+      <input type="number" id="years" required><br><br>
+    </center>
+
+    <center><button type="button" onclick="calculateEMI()">
+        <h2>Calculate EMI</h2>
+      </button><br><br></center>
+    <p id="payment"></p>
+  </div>
+
+  <script>
+    function calculateEMI() {
+
+      var p = document.getElementById("principal").value;
+
+      var iry = document.getElementById("iry").value;
+
+
+      var years = document.getElementById("years").value;
+      if (p == "" || iry == "" || years == "") {
+        alert("enter all fields")
+      }
+      else {
+
+        irm = iry / (12 * 100);
+        mn = years * 12;
+      }
+
+      emi = (p * irm * Math.pow(1 + irm, mn)) / (Math.pow(1 + irm, mn) - 1);
+      var a = document.getElementById("payment").innerHTML = `YOUR EMI ${emi.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+
+</html>
